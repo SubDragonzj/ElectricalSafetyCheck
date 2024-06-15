@@ -151,9 +151,7 @@ namespace YourNamespace
                     paragraph.AddText(page.QuestionText);
                     paragraph.AddLineBreak();
 
-                    paragraph.AddLineBreak();
                     paragraph.AddText(page.ExplanationText);
-                    paragraph.AddLineBreak();
                     paragraph.AddLineBreak(); // 增加空白行
 
                     // 如果结果是 NOT-OK，则设置字体颜色为红色
