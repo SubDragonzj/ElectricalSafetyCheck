@@ -60,18 +60,18 @@ namespace YourNamespace
 
             if (selectedSubject == "安全PLC")
             {
-                pages.Add(new QuestionPage("安全PLC 1：组态安全信号输入使用1oo2评估", "说明：1oo2代表双通道安全回路。", "images/F-CPU/01-EStop1oo2.png"));
-                pages.Add(new QuestionPage("安全PLC 2：急停评估使用博图标准功能块", "说明：ESTOP1是博图自带标准安全功能块。", "images/F-CPU/02-EStopFB.png"));
+                pages.Add(new QuestionPage("■条目1：安全PLC组态安全信号输入使用1oo2评估", "说明：1oo2代表双通道安全回路。", "images/F-CPU/01-EStop1oo2.png"));
+                pages.Add(new QuestionPage("■条目2：安全PLC急停评估使用博图标准功能块", "说明：ESTOP1是博图自带标准安全功能块。", "images/F-CPU/02-EStopFB.png"));
             }
             else if (selectedSubject == "可编程安全继电器")
             {
-                pages.Add(new QuestionPage("可编程安全继电器 1：急停双通道输入", "说明：急停使用双通道。", "images/ProgRelay/01-EStop2channel.png"));
-                pages.Add(new QuestionPage("可编程安全继电器 2：安全门双通道输入", "说明：安全门使用双通道。", "images/ProgRelay/02-SafetyGate.png"));
+                pages.Add(new QuestionPage("■条目1：可编程安全继电器急停双通道输入", "说明：急停使用双通道。", "images/ProgRelay/01-EStop2channel.png"));
+                pages.Add(new QuestionPage("■条目2：可编程安全继电器安全门双通道输入", "说明：安全门使用双通道。", "images/ProgRelay/02-SafetyGate.png"));
             }
             else if (selectedSubject == "安全继电器")
             {
-                pages.Add(new QuestionPage("安全继电器 1：安全信号输入双回路接入安全继电器", "说明：以Pilz为例，S11和S12一组，S21和S22一组", "images/Relay/01-EStop2wires.png"));
-                pages.Add(new QuestionPage("安全继电器 2：每个安全继电器需要手动复位", "说明：接入对应的复位按钮，不允许自动复位", "images/Relay/02-SafetyReset.png"));
+                pages.Add(new QuestionPage("■条目1：安全信号输入双回路接入安全继电器", "说明：以Pilz为例，S11和S12一组，S21和S22一组", "images/Relay/01-EStop2wires.png"));
+                pages.Add(new QuestionPage("■条目2：每个安全继电器需要手动复位", "说明：接入对应的复位按钮，不允许自动复位", "images/Relay/02-SafetyReset.png"));
             }
         }
 
@@ -121,6 +121,7 @@ namespace YourNamespace
             if (inputDialog.ShowDialog() == true)
             {
                 string inputSubject = inputDialog.ResponseText;
+                string currentDate = DateTime.Now.ToString("yyyy年MM月dd日");
 
                 // 创建一个新的文档
                 var document = new Document();
@@ -137,17 +138,35 @@ namespace YourNamespace
                 subjectParagraph.Format.Font.Size = 16;
                 section.AddParagraph().AddLineBreak(); // 增加空行
 
+                // 添加当前日期到每页的右上角
+                var dateParagraph = section.Headers.Primary.AddParagraph();
+                dateParagraph.AddFormattedText(currentDate, TextFormat.Italic);
+                dateParagraph.Format.Alignment = ParagraphAlignment.Right;
+                dateParagraph.Format.Font.Size = 10;
+
                 foreach (var page in pages)
                 {
                     var paragraph = section.AddParagraph();
                     paragraph.Format.SpaceAfter = "1cm";
                     paragraph.AddText(page.QuestionText);
                     paragraph.AddLineBreak();
-                    paragraph.AddText("结果：" + page.SelectedOption);
+
                     paragraph.AddLineBreak();
                     paragraph.AddText(page.ExplanationText);
                     paragraph.AddLineBreak();
                     paragraph.AddLineBreak(); // 增加空白行
+
+                    // 如果结果是 NOT-OK，则设置字体颜色为红色
+                    if (page.SelectedOption == "NOT-OK")
+                    {
+                        var notOkText = paragraph.AddFormattedText("结果：" + page.SelectedOption, TextFormat.Bold);
+                        notOkText.Font.Color = Colors.Red;
+                    }
+                    else
+                    {
+                        paragraph.AddText("结果：" + page.SelectedOption);
+                    }
+
                 }
 
                 // 初始化 PDF 渲染器
