@@ -46,11 +46,15 @@ public class QuestionPage : UserControl
             Margin = new Thickness(0, 20, 0, 20)
         };
 
+        var bitmap = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
+
         var image = new Image
         {
-            Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
-            Height = 200,
-            Margin = new Thickness(0, 0, 0, 20)
+            Source = bitmap,
+            Stretch = System.Windows.Media.Stretch.None, // 确保图像未被拉伸
+            Margin = new Thickness(0, 0, 0, 0),
+            MaxWidth = bitmap.PixelWidth,
+            MaxHeight = bitmap.PixelHeight,
         };
 
         stackPanel.Children.Add(textBlock);
