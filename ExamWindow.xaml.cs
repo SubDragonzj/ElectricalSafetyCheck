@@ -208,7 +208,11 @@ namespace YourNamespace
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow();
+            var mainWindow = new MainWindow()
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
             mainWindow.Show();
             this.Close();
         }

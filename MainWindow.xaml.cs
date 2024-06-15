@@ -9,23 +9,35 @@ namespace YourNamespace
             InitializeComponent();
         }
 
-        private void StartChineseExam(object sender, RoutedEventArgs e)
+        private void StartFCPU(object sender, RoutedEventArgs e)
         {
-            var examWindow = new ExamWindow("安全PLC");
+            var examWindow = new ExamWindow("安全PLC")
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
             examWindow.Show();
             this.Close();
         }
 
-        private void StartMathExam(object sender, RoutedEventArgs e)
+        private void StartProgRealy(object sender, RoutedEventArgs e)
         {
-            var examWindow = new ExamWindow("可编程安全继电器");
+            var examWindow = new ExamWindow("可编程安全继电器")
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
             examWindow.Show();
             this.Close();
         }
 
-        private void StartEnglishExam(object sender, RoutedEventArgs e)
+        private void StartRealy(object sender, RoutedEventArgs e)
         {
-            var examWindow = new ExamWindow("安全继电器");
+            var examWindow = new ExamWindow("安全继电器")
+            {
+                Left = this.Left,
+                Top = this.Top
+            };
             examWindow.Show();
             this.Close();
         }
