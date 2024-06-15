@@ -11,21 +11,21 @@ namespace YourNamespace
 
         private void StartChineseExam(object sender, RoutedEventArgs e)
         {
-            var examWindow = new ExamWindow("语文");
+            var examWindow = new ExamWindow("安全PLC");
             examWindow.Show();
             this.Close();
         }
 
         private void StartMathExam(object sender, RoutedEventArgs e)
         {
-            var examWindow = new ExamWindow("数学");
+            var examWindow = new ExamWindow("可编程安全继电器");
             examWindow.Show();
             this.Close();
         }
 
         private void StartEnglishExam(object sender, RoutedEventArgs e)
         {
-            var examWindow = new ExamWindow("英语");
+            var examWindow = new ExamWindow("安全继电器");
             examWindow.Show();
             this.Close();
         }

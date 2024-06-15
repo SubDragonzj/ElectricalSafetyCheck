@@ -34,10 +34,10 @@ public class QuestionPage : UserControl
 
         var ngButton = new RadioButton
         {
-            Content = "NG",
+            Content = "NOT-OK",
             GroupName = "Options"
         };
-        ngButton.Checked += (s, e) => { SelectedOption = "NG"; };
+        ngButton.Checked += (s, e) => { SelectedOption = "NOT-OK"; };
 
         var explanationBlock = new TextBlock
         {

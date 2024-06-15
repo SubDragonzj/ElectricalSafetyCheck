@@ -58,20 +58,20 @@ namespace YourNamespace
         {
             pages = new List<QuestionPage>();
 
-            if (selectedSubject == "语文")
+            if (selectedSubject == "安全PLC")
             {
-                pages.Add(new QuestionPage("语文题目1：请问这是哪个国家的首都？", "解释1：这是法国的首都巴黎。", "images/paris.jpg"));
-                pages.Add(new QuestionPage("语文题目2：2 + 2 等于几？", "解释2：2 + 2 等于 4。", "images/math.jpg"));
+                pages.Add(new QuestionPage("安全PLC 1：组态安全信号输入使用1oo2评估", "说明：1oo2代表双通道安全回路。", "images/F-CPU/01-EStop1oo2.png"));
+                pages.Add(new QuestionPage("安全PLC 2：急停评估使用博图标准功能块", "说明：ESTOP1是博图自带标准安全功能块。", "images/F-CPU/02-EStopFB.png"));
             }
-            else if (selectedSubject == "数学")
+            else if (selectedSubject == "可编程安全继电器")
             {
-                pages.Add(new QuestionPage("数学题目1：2 + 2 等于几？", "解释1：2 + 2 等于 4。", "images/math.jpg"));
-                pages.Add(new QuestionPage("数学题目2：水的沸点是多少？", "解释2：水的沸点在海平面是 100°C。", "images/water.jpg"));
+                pages.Add(new QuestionPage("可编程安全继电器 1：急停双通道输入", "说明：急停使用双通道。", "images/ProgRelay/01-EStop2channel.png"));
+                pages.Add(new QuestionPage("可编程安全继电器 2：安全门双通道输入", "说明：安全门使用双通道。", "images/ProgRelay/02-SafetyGate.png"));
             }
-            else if (selectedSubject == "英语")
+            else if (selectedSubject == "安全继电器")
             {
-                pages.Add(new QuestionPage("英语题目1：What is the capital of France?", "Explanation 1: The capital of France is Paris.", "images/paris.jpg"));
-                pages.Add(new QuestionPage("英语题目2：What is 2 + 2?", "Explanation 2: 2 + 2 equals 4.", "images/math.jpg"));
+                pages.Add(new QuestionPage("安全继电器 1：安全信号输入双回路接入安全继电器", "说明：以Pilz为例，S11和S12一组，S21和S22一组", "images/Relay/01-EStop2wires.png"));
+                pages.Add(new QuestionPage("安全继电器 2：每个安全继电器需要手动复位", "说明：接入对应的复位按钮，不允许自动复位", "images/Relay/02-SafetyReset.png"));
             }
         }
 
@@ -117,7 +117,7 @@ namespace YourNamespace
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
-            var inputDialog = new InputDialog("请输入科目名称:");
+            var inputDialog = new InputDialog("");
             if (inputDialog.ShowDialog() == true)
             {
                 string inputSubject = inputDialog.ResponseText;
@@ -142,7 +142,7 @@ namespace YourNamespace
                     paragraph.Format.SpaceAfter = "1cm";
                     paragraph.AddText(page.QuestionText);
                     paragraph.AddLineBreak();
-                    paragraph.AddText("Selected Option: " + page.SelectedOption);
+                    paragraph.AddText("结果： " + page.SelectedOption);
                     paragraph.AddLineBreak();
                     paragraph.AddText(page.ExplanationText);
                 }
@@ -161,7 +161,7 @@ namespace YourNamespace
                     var saveDialog = new Microsoft.Win32.SaveFileDialog
                     {
                         Filter = "PDF files (*.pdf)|*.pdf",
-                        FileName = $"{inputSubject}_ExamResults.pdf"
+                        FileName = $"{inputSubject}_电气安全检查.pdf"
                     };
 
                     if (saveDialog.ShowDialog() == true)
