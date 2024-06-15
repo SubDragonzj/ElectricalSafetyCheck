@@ -20,7 +20,7 @@ namespace YourNamespace
             this.Close();
         }
 
-        private void StartProgRealy(object sender, RoutedEventArgs e)
+        private void StartProgRelay(object sender, RoutedEventArgs e)
         {
             var examWindow = new ExamWindow("可编程安全继电器")
             {
@@ -31,7 +31,7 @@ namespace YourNamespace
             this.Close();
         }
 
-        private void StartRealy(object sender, RoutedEventArgs e)
+        private void StartRelay(object sender, RoutedEventArgs e)
         {
             var examWindow = new ExamWindow("安全继电器")
             {

@@ -8,9 +8,9 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="FCPUButton" Content="安全PLC" Width="200" Height="50" Margin="10" Click="StartFCPU"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
-            <Button x:Name="ProgRealyButton" Content="可编程安全继电器" Width="200" Height="50" Margin="10" Click="StartProgRealy"
+            <Button x:Name="ProgRelayButton" Content="可编程安全继电器" Width="200" Height="50" Margin="10" Click="StartProgRelay"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
-            <Button x:Name="RealyButton" Content="安全继电器" Width="200" Height="50" Margin="10" Click="StartRealy"
+            <Button x:Name="RelayButton" Content="安全继电器" Width="200" Height="50" Margin="10" Click="StartRelay"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
         </StackPanel>
     </Grid>
