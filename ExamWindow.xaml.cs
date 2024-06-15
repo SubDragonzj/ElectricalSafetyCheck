@@ -126,25 +126,28 @@ namespace YourNamespace
                 var document = new Document();
                 DefineStyles(document); // 定义字体样式
 
+                // 创建一个单独的章节来容纳所有问题
+                var section = document.AddSection();
+                section.PageSetup.TopMargin = "2cm";
+
+                // 在每页顶部中间添加科目名称
+                var subjectParagraph = section.AddParagraph();
+                subjectParagraph.AddFormattedText(inputSubject, TextFormat.Bold);
+                subjectParagraph.Format.Alignment = ParagraphAlignment.Center;
+                subjectParagraph.Format.Font.Size = 16;
+                section.AddParagraph().AddLineBreak(); // 增加空行
+
                 foreach (var page in pages)
                 {
-                    var section = document.AddSection();
-                    section.PageSetup.TopMargin = "2cm";
-
-                    // 在每页顶部中间添加科目名称
-                    var subjectParagraph = section.AddParagraph();
-                    subjectParagraph.AddFormattedText(inputSubject, TextFormat.Bold);
-                    subjectParagraph.Format.Alignment = ParagraphAlignment.Center;
-                    subjectParagraph.Format.Font.Size = 16;
-                    section.AddParagraph().AddLineBreak(); // 增加空行
-
                     var paragraph = section.AddParagraph();
                     paragraph.Format.SpaceAfter = "1cm";
                     paragraph.AddText(page.QuestionText);
                     paragraph.AddLineBreak();
-                    paragraph.AddText("结果： " + page.SelectedOption);
+                    paragraph.AddText("结果：" + page.SelectedOption);
                     paragraph.AddLineBreak();
                     paragraph.AddText(page.ExplanationText);
+                    paragraph.AddLineBreak();
+                    paragraph.AddLineBreak(); // 增加空白行
                 }
 
                 // 初始化 PDF 渲染器
