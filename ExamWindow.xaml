@@ -1,0 +1,24 @@
+<Window x:Class="YourNamespace.ExamWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Exam" Height="600" Width="800"
+        materialDesign:ColorZoneAssist.Mode="PrimaryLight">
+    <Grid>
+        <Frame x:Name="QuestionFrame" VerticalAlignment="Top" Margin="10,10,10,150"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50">
+            <Button x:Name="PreviousButton" Content="上一页" Width="75" Click="PreviousButton_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+            <TextBox x:Name="PageNumberTextBox" Width="50" TextAlignment="Center" Margin="10,0,10,0"
+                     Style="{StaticResource MaterialDesignTextBox}" />
+            <Button x:Name="GoToPageButton" Content="跳转" Width="75" Click="GoToPageButton_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+            <Button x:Name="NextButton" Content="下一页" Width="75" Click="NextButton_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+        </StackPanel>
+        <Button x:Name="ExportButton" Content="导出为PDF" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Margin="10,0,0,10"
+                Style="{StaticResource MaterialDesignRaisedButton}" Click="ExportButton_Click"/>
+        <Button x:Name="BackButton" Content="返回主界面" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Margin="0,0,10,10"
+                Style="{StaticResource MaterialDesignRaisedButton}" Click="BackButton_Click"/>
+    </Grid>
+</Window>
