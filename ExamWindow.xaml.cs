@@ -39,6 +39,12 @@ namespace YourNamespace
             }
         }
 
+        // 更新页数信息显示方法
+        private void UpdatePageInfo()
+        {
+            PageInfoTextBlock.Text = $"第 {currentPageIndex + 1} 页 / 共 {pages.Count} 页";
+        }
+
         public ExamWindow(string subject)
         {
             InitializeComponent();
@@ -52,6 +58,9 @@ namespace YourNamespace
 
             // 设置自定义字体解析器
             GlobalFontSettings.FontResolver = new CustomFontResolver();
+
+            // 更新显示信息
+            UpdatePageInfo();
         }
 
         private void InitializePages()
@@ -90,6 +99,7 @@ namespace YourNamespace
             {
                 currentPageIndex--;
                 ShowPage(currentPageIndex);
+                UpdatePageInfo();
             }
         }
 
@@ -99,6 +109,7 @@ namespace YourNamespace
             {
                 currentPageIndex++;
                 ShowPage(currentPageIndex);
+                UpdatePageInfo();
             }
         }
 
@@ -111,6 +122,11 @@ namespace YourNamespace
                 {
                     currentPageIndex = pageIndex;
                     ShowPage(currentPageIndex);
+                    UpdatePageInfo();
+                }
+                else
+                {
+                    MessageBox.Show("请输入有效的页码");
                 }
             }
         }

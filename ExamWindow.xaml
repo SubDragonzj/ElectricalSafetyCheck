@@ -13,6 +13,15 @@
                     Style="{StaticResource MaterialDesignRaisedButton}" />
             <Button x:Name="NextButton" Content="下一页" Width="75" Click="NextButton_Click"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
+
+            <!-- Add this TextBlock to display the current page and total pages -->
+            <TextBlock Name="PageInfoTextBlock" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" 
+                   Margin="10" 
+                   FontSize="14" 
+                   FontWeight="Bold" />
+            
         </StackPanel>
         <Button x:Name="ExportButton" Content="导出为PDF" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100" Margin="10,0,0,10"
                 Style="{StaticResource MaterialDesignRaisedButton}" Click="ExportButton_Click"/>
